@@ -1,0 +1,327 @@
+/* ─── Card / Table row ────────────────────────────────────────── */
+.card {
+  display: grid;
+  grid-template-columns: 64px 1fr 160px 90px 130px;
+  align-items: center;
+  gap: 0;
+  padding: 0.85rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background var(--transition), border-color var(--transition),
+    transform var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: rowIn 220ms ease both;
+}
+
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background var(--transition);
+}
+
+.card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  transform: translateX(2px);
+}
+
+.card:hover::before {
+  background: var(--text-muted);
+}
+
+/* ─── Best row ──── */
+.best {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 32px var(--best-glow);
+}
+
+.best::before {
+  background: var(--accent) !important;
+}
+
+.best:hover {
+  border-color: var(--accent);
+}
+
+/* ─── Out of stock row ──── */
+.outOfStock {
+  opacity: 0.55;
+}
+
+/* ─── Image cell ────── */
+.imageBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--image-bg);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 240ms ease;
+}
+
+.card:hover .image {
+  transform: scale(1.07);
+}
+
+.outOfStockOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ─── Body / Name + badges ─────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0 1.25rem;
+  min-width: 0;
+}
+
+.productName {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Badge row ──── */
+.badgeRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 0.18rem 0.42rem;
+  white-space: nowrap;
+}
+
+.badgeBest {
+  color: var(--accent);
+  background: var(--badge-bg);
+  border: 1px solid var(--accent);
+}
+
+.badgeSaving {
+  color: var(--price-best);
+  background: rgba(30, 140, 69, 0.1);
+  border: 1px solid rgba(30, 140, 69, 0.3);
+}
+
+.badgePrime {
+  color: #00a8e0;
+  background: rgba(0, 168, 224, 0.1);
+  border: 1px solid rgba(0, 168, 224, 0.3);
+}
+
+.badgePromo {
+  color: var(--text-secondary);
+  background: var(--image-bg);
+  border: 1px solid var(--border);
+}
+
+/* ─── Merchant cell ────── */
+.merchantCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  min-width: 0;
+}
+
+.merchantLogo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 2px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.merchantName {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Stock cell ────── */
+.stockCell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.5rem;
+}
+
+.stockDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotIn {
+  background: var(--price-best);
+  box-shadow: 0 0 0 2px rgba(30, 140, 69, 0.2);
+}
+
+.dotOut {
+  background: var(--text-muted);
+}
+
+.stockLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Price + CTA ─────── */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding-left: 0.75rem;
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.bestPrice {
+  color: var(--price-best);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.buyBtn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.3rem 0.65rem;
+  background: transparent;
+  transition: color var(--transition), border-color var(--transition),
+    background var(--transition);
+  white-space: nowrap;
+}
+
+.buyBtn:hover {
+  color: var(--text-primary);
+  background: var(--btn-hover);
+  border-color: var(--border-hover);
+}
+
+.buyBtnDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.best .buyBtn {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.best .buyBtn:hover {
+  background: var(--accent-dim);
+}
+
+/* ─── Responsive ─────── */
+@media (max-width: 720px) {
+  .card {
+    grid-template-columns: 48px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem 0;
+    padding: 0.85rem 1rem;
+  }
+
+  .imageBox {
+    grid-row: 1 / 3;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+  }
+
+  .body {
+    grid-column: 2 / 3;
+    padding: 0 0.75rem;
+  }
+
+  .right {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .merchantCell,
+  .stockCell {
+    display: none;
+  }
+}
