@@ -1,75 +1,190 @@
-# React + TypeScript + Vite
+# 🧩 Widget Project (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modular **Widget system** built using **React**, **TypeScript**, and **Vite**.
+This project focuses on creating reusable UI components with a clean and scalable structure.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* ⚛️ React with TypeScript
+* ⚡ Fast development using Vite
+* 🧩 Reusable Widget & Card components
+* 🔌 API integration layer
+* 🎯 Clean separation of concerns (components, utils, types, api)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 📁 Folder Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+.
+├── public/                 # Static assets
+├── src/
+│   ├── api/                # API calls and services
+│   ├── assets/             # CSS modules and static resources
+│   ├── components/         # Reusable components
+│   │   ├── Card.tsx
+│   │   └── Widget.tsx
+│   ├── types/              # TypeScript types/interfaces
+│   ├── utils/              # Helper functions
+│   ├── App.tsx             # Main app component
+│   ├── main.tsx            # Entry point
+│   ├── App.css             # App-level styles
+│   └── index.css           # Global styles
+│
+├── index.html              # Root HTML file
+├── package.json            # Project dependencies & scripts
+├── tsconfig.json           # TypeScript config
+├── vite.config.ts          # Vite configuration
+└── eslint.config.js        # ESLint configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd <project-folder>
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Running the Project
+
+### Start development server
+
+```bash
+npm run dev
+```
+
+App will run on:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🏗️ Build for Production
+
+```bash
+npm run build
+```
+
+### Preview build
+
+```bash
+npm run preview
+```
+
+---
+
+## 🧠 Project Architecture
+
+### 🔹 Components (`src/components`)
+
+* `Widget.tsx` → Core widget container
+* `Card.tsx` → Reusable UI wrapper
+
+These are designed to be:
+
+* Reusable
+* Composable
+* Independent from business logic
+
+---
+
+### 🔹 API Layer (`src/api`)
+
+Handles all external data fetching and API communication.
+
+* Keeps network logic separate from UI
+* Makes components cleaner and easier to test
+
+---
+
+### 🔹 Assets (`src/assets`)
+
+* Contains CSS modules and static styling resources
+* Scoped styles for better maintainability
+
+---
+
+### 🔹 Utils (`src/utils`)
+
+* Helper functions
+* Shared logic across the app
+
+---
+
+### 🔹 Types (`src/types`)
+
+* Central place for TypeScript interfaces and types
+* Ensures type safety across components and API calls
+
+---
+
+## 🧩 Example Usage
+
+```tsx
+import Widget from "./components/Widget"
+
+function App() {
+  return (
+    <Widget title="Dashboard Widget">
+      <p>Widget content goes here</p>
+    </Widget>
+  )
+}
+
+export default App
+```
+
+---
+
+## 🔧 Scripts
+
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run preview   # Preview production build
+```
+
+---
+
+## 🛠️ Tech Stack
+
+* React
+* TypeScript
+* Vite
+* ESLint
+
+---
+
+## 📌 Notes
+
+* This project uses **CSS modules / standard CSS**, not Tailwind
+* Structure is designed for scalability and maintainability
+* Easy to extend with additional widgets or features
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork the project and submit improvements.
+
+---
+
+## 📄 License
+
+MIT License
