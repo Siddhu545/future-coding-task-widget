@@ -13,35 +13,6 @@ This project focuses on creating reusable UI components with a clean and scalabl
 * 🔌 API integration layer
 * 🎯 Clean separation of concerns (components, utils, types, api)
 
----
-
-## 📁 Folder Structure
-
-```bash
-.
-├── public/                 # Static assets
-├── src/
-│   ├── api/                # API calls and services
-│   ├── assets/             # CSS modules and static resources
-│   ├── components/         # Reusable components
-│   │   ├── Card.tsx
-│   │   └── Widget.tsx
-│   ├── types/              # TypeScript types/interfaces
-│   ├── utils/              # Helper functions
-│   ├── App.tsx             # Main app component
-│   ├── main.tsx            # Entry point
-│   ├── App.css             # App-level styles
-│   └── index.css           # Global styles
-│
-├── index.html              # Root HTML file
-├── package.json            # Project dependencies & scripts
-├── tsconfig.json           # TypeScript config
-├── vite.config.ts          # Vite configuration
-└── eslint.config.js        # ESLint configuration
-```
-
----
-
 ## ⚙️ Installation
 
 ### 1. Clone the repository
@@ -183,8 +154,3 @@ npm run preview   # Preview production build
 
 Feel free to fork the project and submit improvements.
 
----
-
-## 📄 License
-
-MIT License
